@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ProyectoDefinitivo</string>
+
+    <!--Opciones del menu del bottom navigation-->
+    <string name="noticias">Noticias</string>
+    <string name="home">Home</string>
+    <string name="usuario">Usuario</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello world!!!!!</string>
+
+
+</resources>
