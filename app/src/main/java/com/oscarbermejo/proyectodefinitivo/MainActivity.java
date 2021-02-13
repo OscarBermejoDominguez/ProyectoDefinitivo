@@ -2,11 +2,15 @@ package com.oscarbermejo.proyectodefinitivo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -16,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         BottomNavigationView navigation = findViewById(R.id.bottomNavigationView);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -51,4 +54,9 @@ public class MainActivity extends AppCompatActivity {
             ft.replace(R.id.frame_layout, fragment);
             ft.commit();
         }
+
+    public void clickFamilias(View view) {
+        Intent intent = new Intent(this, FamiliasProfesionalesActivity.class);
+        startActivity(intent);
+    }
 }
