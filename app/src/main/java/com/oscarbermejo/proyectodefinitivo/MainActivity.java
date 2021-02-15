@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView navigation = findViewById(R.id.bottomNavigationView);
+        BottomNavigationView navigation = findViewById(R.id.bottomNavigationView_main);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.parte_home);
     }
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void loadFragment(Fragment fragment){
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frame_layout, fragment);
+        ft.replace(R.id.fragmentLayout_main, fragment);
         ft.commit();
     }
 

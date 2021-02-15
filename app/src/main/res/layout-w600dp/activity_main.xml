@@ -29,7 +29,7 @@
         android:layout_height="match_parent"
 
         android:layout_weight="3.5"
-        android:background="#FFFFFF"
+        style="@style/BottomNavigationView"
         app:menu="@menu/menu_bottom">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
