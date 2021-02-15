@@ -20,4 +20,25 @@
         <item name="itemIconTint">@color/green_light2</item>
         <item name="itemTextColor">@color/green_light2</item>
     </style>
+
+    <!--Estilo de los botones-->
+    <style name="Botton_radio" >
+        <item name="cardCornerRadius">80dp</item>
+        <item name="cardElevation">80dp</item>
+    </style>
+
+    <style name="MyCardView" parent="CardView">
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardCornerRadius">40dp</item>
+        <item name="cardBackgroundColor">@color/green_dark</item>
+    </style>
+
+
+    <style name="txtCuentaUsuario">
+        <item name="itemTextColor">@color/green_light2</item>
+        <item name="android:layout_weight">4</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

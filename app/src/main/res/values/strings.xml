@@ -8,5 +8,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello world!!!!!</string>
 
+    <!--Datos del layout pestania usuario-->
+    <string name="nombre_usuario">Nombre del usuario</string>
+    <string name="cuenta_usuario">Cuenta usuario</string>
 
 </resources>
