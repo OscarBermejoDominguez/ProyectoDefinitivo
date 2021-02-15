@@ -8,4 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green_100">#00643b</color>
+
+    <!--Colores principales de nuestra aplicacion-->
+    <color name="green_dark">#062925</color>
+    <color name="green_normal">#044a42</color>
+    <color name="green_light">#3a9188</color>
+    <color name="green_light2">#b8e1dd</color>
+
 </resources>

@@ -11,11 +11,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentoOscar#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentoOscar extends Fragment {
     private String texto;
     public FragmentoOscar() {

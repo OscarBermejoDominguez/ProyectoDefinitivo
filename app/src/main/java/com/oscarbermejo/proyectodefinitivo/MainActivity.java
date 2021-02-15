@@ -45,15 +45,19 @@ public class MainActivity extends AppCompatActivity {
             loadFragment(new FragmentoOscar(texto));
 
             return true;
-
         }
     };
 
-        public void loadFragment(Fragment fragment){
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.frame_layout, fragment);
-            ft.commit();
-        }
+    /**
+     * Permite cargar un fragment dentro del frameLayout que tenemos en la
+     * actividad principal
+     * @param fragment que queremos insertar en el frameLayout
+     */
+    public void loadFragment(Fragment fragment){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frame_layout, fragment);
+        ft.commit();
+    }
 
     public void clickFamilias(View view) {
         Intent intent = new Intent(this, FamiliasProfesionalesActivity.class);
