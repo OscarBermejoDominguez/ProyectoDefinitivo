@@ -21,7 +21,8 @@ public class AdaptadorFragmentUsuario extends BaseAdapter {
     private ArrayList<Tag> datosLista;
     private Context context;
 
-    public AdaptadorFragmentUsuario(ArrayList<Tag> datosLista) {
+    public AdaptadorFragmentUsuario(Context context, ArrayList<Tag> datosLista) {
+        this.context = context;
         this.datosLista = datosLista;
     }
 

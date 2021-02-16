@@ -5,46 +5,54 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.oscarbermejo.proyectodefinitivo.fragments.FragmentUsuario;
 import com.oscarbermejo.proyectodefinitivo.fragments.FragmentoOscar;
 
 public class MainActivity extends AppCompatActivity {
-
+    private Context context;
+    private Aplicacion aplicacion;
+    private MainActivity mainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.aplicacion = (Aplicacion)this.getApplication();
+
         BottomNavigationView navigation = findViewById(R.id.bottomNavigationView_main);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.parte_home);
 
-
+        mainActivity = this;
     }
 
 
     private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            String texto = "FRAGMENTO ";
+            Fragment fragmento = null;
             switch (item.getItemId()) {
                 case R.id.parte_noticias:
-                    texto += "NOTICIAS";
+                    fragmento = new FragmentoOscar("Fragmento noticias");
                     break;
                 case R.id.parte_home:
-                    texto += "HOME";
+                    fragmento = new FragmentoOscar("Fragmento home");
                     break;
                 case R.id.parte_usuario:
-                    texto += "USUARIO";
+                    fragmento = new FragmentUsuario(mainActivity ,mainActivity.getBaseContext(),
+                                    aplicacion.getTagsUsuarios());
                     break;
             }
-            loadFragment(new FragmentoOscar(texto));
 
+            if(fragmento != null)
+                loadFragment(fragmento);
             return true;
         }
     };
@@ -63,5 +71,10 @@ public class MainActivity extends AppCompatActivity {
     public void clickFamilias(View view) {
         Intent intent = new Intent(this, FamiliasProfesionalesActivity.class);
         startActivity(intent);
+    }
+
+    public void lanzarActividad(Class clase){
+        Intent i = new Intent(this, clase);
+        startActivity(i);
     }
 }

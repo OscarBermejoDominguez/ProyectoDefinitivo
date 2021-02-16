@@ -40,11 +40,12 @@ public class Usuario implements Tag {
         this.imagen = imagen;
     }
 
-    public Class getActividad() {
+    @Override
+    public Class getClase() {
         return actividad;
     }
 
-    public void setActividad(Class actividad) {
+    public void setClase(Class actividad) {
         this.actividad = actividad;
     }
 }

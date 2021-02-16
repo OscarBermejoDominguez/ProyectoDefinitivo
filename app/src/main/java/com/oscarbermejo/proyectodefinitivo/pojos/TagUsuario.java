@@ -38,6 +38,7 @@ public class TagUsuario implements Tag{
         this.imagen = imagen;
     }
 
+    @Override
     public Class getClase() {
         return clase;
     }

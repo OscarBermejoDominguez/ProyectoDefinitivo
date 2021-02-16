@@ -1,37 +1,49 @@
 package com.oscarbermejo.proyectodefinitivo.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.oscarbermejo.proyectodefinitivo.MainActivity;
 import com.oscarbermejo.proyectodefinitivo.R;
+import com.oscarbermejo.proyectodefinitivo.adaptadores.AdaptadorFragmentUsuario;
 import com.oscarbermejo.proyectodefinitivo.pojos.Tag;
+import com.oscarbermejo.proyectodefinitivo.pojos.TagUsuario;
+import com.oscarbermejo.proyectodefinitivo.pojos.Usuario;
 
 import java.util.ArrayList;
 
 /**
  */
 public class FragmentUsuario extends Fragment {
+    private MainActivity mainActivity;
 
+    //Lista de tags que va contener la pestaña usuario
     private ArrayList<Tag> tagsLista;
 
-    public FragmentUsuario(ArrayList<Tag> datosLista) {
+    //contexto de la aplicacion
+    private Context context;
+
+    public FragmentUsuario(){
+        //constructor necesario vacio
+    }
+
+    public FragmentUsuario(MainActivity mainActivity, Context context, ArrayList<Tag> datosLista) {
+        this.mainActivity = mainActivity;
+        this.context = context;
         this.tagsLista = datosLista;
-        //Constructor vacio
     }
 
-    /**
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentUsuario newInstance(String param1, String param2) {
-        FragmentUsuario fragment = new FragmentUsuario();
-
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +54,21 @@ public class FragmentUsuario extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_usuario, container, false);
+        // conseguimos la vista del fragment usuario
+        View vista = inflater.inflate(R.layout.fragment_usuario, container, false);
+
+
+        ListView listaTags = vista.findViewById(R.id.lista_tags_usuario);
+        listaTags.setAdapter(new AdaptadorFragmentUsuario(context, tagsLista));
+        listaTags.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Tag tagSe = (Tag)listaTags.getItemAtPosition(position);
+                mainActivity.lanzarActividad(tagSe.getClase());
+            }
+        });
+
+
+        return vista;
     }
 }
