@@ -47,6 +47,20 @@ public class Aplicacion extends Application {
     }
 
     /**
+     * Metodo que devuelve los datos que puede buscar el buscador
+     * @return String[] con los datos que puede buscar
+     */
+    public String[] getSeacherBarOptions(){
+        return new String[]{
+                "Centros",
+                "Lugares",
+                "Grados",
+                "Alumnos",
+                "Profesores"
+        };
+    }
+
+    /**
      * Optiene los datos del usuario
      * @return Usuario con sus datos correspondientes
      */
