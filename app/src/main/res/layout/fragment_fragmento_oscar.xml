@@ -3,7 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentoOscar">
+    tools:context=".fragments.FragmentoOscar">
+
+
+<!--    <include-->
+<!--        android:id="@+id/nuevo"-->
+<!--        layout="@layout/layout_pestania_usuario"/>-->
+
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -15,16 +21,5 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/btnFamilias"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
 
 </FrameLayout>

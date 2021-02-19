@@ -15,4 +15,8 @@
     <color name="green_light">#3a9188</color>
     <color name="green_light2">#b8e1dd</color>
 
+
+    <!--Colores de las tarjetas de usuario-->
+    <color name="tarjeta_cuenta">#044a42</color>
+    <color name="tarjetas_extras">#10682e</color>
 </resources>

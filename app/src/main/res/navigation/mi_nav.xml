@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentoOscar"
-        android:name="com.oscarbermejo.proyectodefinitivo.FragmentoOscar"
+        android:name="com.oscarbermejo.proyectodefinitivo.fragments.FragmentoOscar"
         android:label="fragment_fragmento_oscar"
         tools:layout="@layout/fragment_fragmento_oscar" >
         <action
