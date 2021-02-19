@@ -7,11 +7,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.oscarbermejo.proyectodefinitivo.fragments.FragmentNoticias;
 import com.oscarbermejo.proyectodefinitivo.fragments.FragmentUsuario;
 import com.oscarbermejo.proyectodefinitivo.fragments.FragmentoOscar;
 
@@ -26,36 +29,37 @@ public class MainActivity extends AppCompatActivity {
 
         this.aplicacion = (Aplicacion)this.getApplication();
 
+
+        boolean conexion = comprobarConexionInternet();
         BottomNavigationView navigation = findViewById(R.id.bottomNavigationView_main);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragmento = null;
+                switch (item.getItemId()) {
+                    case R.id.parte_noticias:
+                        fragmento = new FragmentNoticias(mainActivity.getBaseContext(), conexion);
+                        break;
+                    case R.id.parte_home:
+                        fragmento = new FragmentoOscar("Fragmento home");
+                        break;
+                    case R.id.parte_usuario:
+                        fragmento = new FragmentUsuario(mainActivity ,mainActivity.getBaseContext(),
+                                aplicacion.getTagsUsuarios());
+                        break;
+                }
+
+                if(fragmento != null)
+                    loadFragment(fragmento);
+                return true;
+            }
+        });
+
+
         navigation.setSelectedItemId(R.id.parte_home);
 
         mainActivity = this;
     }
-
-
-    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragmento = null;
-            switch (item.getItemId()) {
-                case R.id.parte_noticias:
-                    fragmento = new FragmentoOscar("Fragmento noticias");
-                    break;
-                case R.id.parte_home:
-                    fragmento = new FragmentoOscar("Fragmento home");
-                    break;
-                case R.id.parte_usuario:
-                    fragmento = new FragmentUsuario(mainActivity ,mainActivity.getBaseContext(),
-                                    aplicacion.getTagsUsuarios());
-                    break;
-            }
-
-            if(fragmento != null)
-                loadFragment(fragmento);
-            return true;
-        }
-    };
 
     /**
      * Permite cargar un fragment dentro del frameLayout que tenemos en la
@@ -76,5 +80,11 @@ public class MainActivity extends AppCompatActivity {
     public void lanzarActividad(Class clase){
         Intent i = new Intent(this, clase);
         startActivity(i);
+    }
+
+    private boolean comprobarConexionInternet(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
     }
 }

@@ -24,31 +24,25 @@ import com.oscarbermejo.proyectodefinitivo.pojos.Usuario;
 import java.util.ArrayList;
 
 /**
+ * Fragmento que muestra todos los datos relacionados con el usuario
+ * Muestra una lista de tags junto con tag especial que contiene todos los datos del
+ * usuario logeado
  */
 public class FragmentUsuario extends Fragment {
+    //main activity que nos permite lanzar diferentes pantallas dependiendo del tag
+    /// seleccionado
     private MainActivity mainActivity;
 
     //Lista de tags que va contener la pestaña usuario
     private ArrayList<Tag> tagsLista;
 
-    //contexto de la aplicacion
-    private Context context;
-
     public FragmentUsuario(){
         //constructor necesario vacio
     }
 
-    public FragmentUsuario(MainActivity mainActivity, Context context, ArrayList<Tag> datosLista) {
-        this.mainActivity = mainActivity;
-        this.context = context;
-        this.tagsLista = datosLista;
-    }
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -57,18 +51,25 @@ public class FragmentUsuario extends Fragment {
         // conseguimos la vista del fragment usuario
         View vista = inflater.inflate(R.layout.fragment_usuario, container, false);
 
-
+        //Conseguimos de la vista los tags que tiene el usuario disponibles
         ListView listaTags = vista.findViewById(R.id.lista_tags_usuario);
-        listaTags.setAdapter(new AdaptadorFragmentUsuario(context, tagsLista));
+        //Insertamos el adaptador a la lista
+        listaTags.setAdapter(new AdaptadorFragmentUsuario(mainActivity.getBaseContext(), tagsLista));
         listaTags.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /**
+             * Dependiendo del tag seleccionado nos sacara una actividad u otra
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Tag tagSe = (Tag)listaTags.getItemAtPosition(position);
+                Tag tagSe = (Tag)listaTags.getItemAtPosition(position); //Conseguimos el tag
+                //Lanzamos la nueva actividad con la clase del tag
                 mainActivity.lanzarActividad(tagSe.getClase());
             }
         });
-
-
-        return vista;
+        return vista; //Devolvemos la vista con todos los datos insertados
     }
 }

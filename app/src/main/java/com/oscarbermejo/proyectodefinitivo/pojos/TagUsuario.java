@@ -3,23 +3,17 @@ package com.oscarbermejo.proyectodefinitivo.pojos;
 import android.content.Intent;
 
 /**
- * Pojo que almacena todos los datos de un tag de usuario
- * Un tag es una opcion que el usuario tiene dentro de su pantalla
- *   y este tag contiene un texto, una imagen y una actividad que puede lanzar
+ * Tag que permite almacenar una opcion que tiene disponible el usuario para clicar
  */
-public class TagUsuario implements Tag{
-    private Class clase;
-    private String texto;
-    private int imagen;
+public class TagUsuario extends Tag{
+
 
     public TagUsuario() {
         //Constructor vacio
     }
 
     public TagUsuario(String texto, int imagen, Class clase) {
-        this.clase = clase;
-        this.texto = texto;
-        this.imagen = imagen;
+        super(texto, imagen, clase);
     }
 
     public String getTexto() {

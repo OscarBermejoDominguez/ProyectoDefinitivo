@@ -12,4 +12,12 @@
     <string name="nombre_usuario">Nombre del usuario</string>
     <string name="cuenta_usuario">Cuenta usuario</string>
 
+    <!--Datos del layout fragment_noticias_sin_internet-->
+    <string name="sin_internet">NO SE HA DADO EL PERMISO DE INTERNET</string>
+    <string name="sin_internet_image">Imagen que representa el dolor de que no te quieran</string>
+
+    <!--URLS-->
+    <string name="url_noticias">https://www.larioja.org/educacion/es/noticias-generales/todas-noticias</string>
+
+
 </resources>
